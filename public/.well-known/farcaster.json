@@ -10,14 +10,14 @@
     "subtitle": "Built with Zara",
     "description": "QuoteFlow is a Base Mini App built with Zara.",
     "iconUrl": "https://0co.to/images/zara-2.png",
-    "homeUrl": "https://a08db5c4-00aa-49bb-9c76-ead9f6aa6bfa.vistara.dev",
-    "splashImageUrl": "https://dummyimage.com/200x200/0a0b0d/ffffff.png&text=Splash",
+    "homeUrl": "https://a08db5c400aa49bb9c76ead9f6aa6bfa-ci05-2b0ltoywq-vistara.vercel.app",
+    "splashImageUrl": "https://a08db5c400aa49bb9c76ead9f6aa6bfa-ci05-2b0ltoywq-vistara.vercel.app/splash.png",
     "splashBackgroundColor": "#000000",
-    "heroImageUrl": "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=Hero",
+    "heroImageUrl": "https://a08db5c400aa49bb9c76ead9f6aa6bfa-ci05-2b0ltoywq-vistara.vercel.app/image.png",
     "tagline": "QuoteFlow",
     "screenshotUrls": [
-      "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=Shot1",
-      "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=Shot2"
+      "https://a08db5c400aa49bb9c76ead9f6aa6bfa-ci05-2b0ltoywq-vistara.vercel.app/screenshot.png",
+      "https://a08db5c400aa49bb9c76ead9f6aa6bfa-ci05-2b0ltoywq-vistara.vercel.app/screenshot.png"
     ],
     "primaryCategory": "social",
     "tags": [
@@ -25,6 +25,6 @@
       "miniapp",
       "onchainkit"
     ],
-    "webhookUrl": "https://a08db5c4-00aa-49bb-9c76-ead9f6aa6bfa.vistara.dev/api/webhook"
+    "webhookUrl": "https://a08db5c400aa49bb9c76ead9f6aa6bfa-ci05-2b0ltoywq-vistara.vercel.app/api/webhook"
   }
 }
