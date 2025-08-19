@@ -1,4 +1,3 @@
-
 "use client";
 
 import {
@@ -25,6 +24,7 @@ import { AppShell } from "./components/AppShell";
 import { QuoteForm } from "./components/QuoteForm";
 import { QuoteResults } from "./components/QuoteResults";
 import { CallToAction } from "./components/CallToAction";
+import { ThemeToggle } from "./components/ThemeToggle";
 import { useInsuranceData } from "./hooks/useInsuranceData";
 import { Quote, InsuranceProfile } from "./types";
 
@@ -208,9 +208,9 @@ export default function App() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-bg">
+    <div className="flex flex-col min-h-screen bg-bg dark:bg-bg">
       <div className="w-full max-w-md mx-auto">
-        <header className="flex justify-between items-center px-4 py-3 bg-surface border-b border-border">
+        <header className="flex justify-between items-center px-4 py-3 bg-surface dark:bg-surface border-b border-border dark:border-border backdrop-blur-sm bg-opacity-90 dark:bg-opacity-90">
           <div className="flex items-center space-x-2">
             <Wallet className="z-10">
               <ConnectWallet>
@@ -227,7 +227,10 @@ export default function App() {
               </WalletDropdown>
             </Wallet>
           </div>
-          <div>{saveFrameButton()}</div>
+          <div className="flex items-center space-x-2">
+            {saveFrameButton()}
+            <ThemeToggle />
+          </div>
         </header>
 
         <AppShell
@@ -244,7 +247,8 @@ export default function App() {
         <footer className="px-4 py-3 text-center">
           <button
             onClick={() => openUrl("https://base.org/builders/minikit")}
-            className="text-text-secondary text-xs hover:text-text-primary transition-colors"
+            className="text-text-secondary dark:text-text-secondary text-xs hover:text-text-primary dark:hover:text-text-primary transition-colors"
+            aria-label="Learn more about Base MiniKit"
           >
             Built on Base with MiniKit
           </button>
