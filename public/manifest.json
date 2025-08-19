@@ -1,0 +1,14 @@
+{
+  "name": "QuoteFlow",
+  "description": "QuoteFlow is a Base Mini App built with Zara.",
+  "image": "https://dummyimage.com/1200x628/0a0b0d/ffffff.png&text=OG",
+  "external_url": "https://a08db5c4-00aa-49bb-9c76-ead9f6aa6bfa.vistara.dev",
+  "properties": {
+    "app": {
+      "name": "QuoteFlow",
+      "description": "QuoteFlow is a Base Mini App built with Zara.",
+      "url": "https://a08db5c4-00aa-49bb-9c76-ead9f6aa6bfa.vistara.dev",
+      "icon": "https://0co.to/images/zara-2.png"
+    }
+  }
+}

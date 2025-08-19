@@ -1,0 +1,76 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --primary: 220 80% 50%;
+    --accent: 170 70% 45%;
+    --bg: 220 15% 98%;
+    --surface: 220 15% 100%;
+    --text-primary: 220 20% 20%;
+    --text-secondary: 220 15% 40%;
+    --border: 220 15% 90%;
+  }
+  
+  body {
+    @apply bg-bg text-text-primary font-sans;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary hover:bg-primary/90 text-white px-4 py-3 rounded-md font-semibold transition-all duration-200;
+  }
+  
+  .btn-secondary {
+    @apply bg-surface hover:bg-border text-text-primary px-4 py-3 rounded-md font-semibold border border-border transition-all duration-200;
+  }
+  
+  .card {
+    @apply bg-surface border border-border rounded-lg p-6 shadow-card;
+  }
+  
+  .input-field {
+    @apply bg-surface border border-border rounded-md px-3 py-2 text-text-primary placeholder:text-text-secondary focus:border-accent focus:outline-none transition-colors duration-200;
+  }
+  
+  .display {
+    @apply text-3xl font-bold text-text-primary;
+  }
+  
+  .heading {
+    @apply text-xl font-semibold text-text-primary;
+  }
+  
+  .body {
+    @apply text-base leading-6 text-text-primary;
+  }
+  
+  .progress-step {
+    @apply w-8 h-8 rounded-full border-2 flex items-center justify-center text-sm font-semibold transition-all duration-200;
+  }
+  
+  .progress-step.active {
+    @apply bg-primary border-primary text-white;
+  }
+  
+  .progress-step.inactive {
+    @apply bg-surface border-border text-text-secondary;
+  }
+  
+  .progress-step.completed {
+    @apply bg-accent border-accent text-white;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(10px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
