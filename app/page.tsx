@@ -25,8 +25,64 @@ import { QuoteForm } from "./components/QuoteForm";
 import { QuoteResults } from "./components/QuoteResults";
 import { CallToAction } from "./components/CallToAction";
 import { ThemeToggle } from "./components/ThemeToggle";
+import { ErrorMessage } from "./components/ErrorMessage";
 import { useInsuranceData } from "./hooks/useInsuranceData";
 import { Quote, InsuranceProfile } from "./types";
+
+// Mock data for fallback
+const mockQuotes: Quote[] = [
+  {
+    quoteId: "q1",
+    providerName: "StateWide Insurance",
+    coverageDetails: {
+      homeDeductible: 1000,
+      autoDeductible: 500,
+      liability: "300/100/50",
+      comprehensive: true,
+      collision: true,
+    },
+    premium: {
+      monthly: 185,
+      annual: 2220,
+    },
+    policyLink: "#",
+    rating: 4,
+  },
+  {
+    quoteId: "q2",
+    providerName: "SafeGuard Insurance",
+    coverageDetails: {
+      homeDeductible: 2500,
+      autoDeductible: 1000,
+      liability: "250/50/25",
+      comprehensive: true,
+      collision: false,
+    },
+    premium: {
+      monthly: 145,
+      annual: 1740,
+    },
+    policyLink: "#",
+    rating: 3,
+  },
+  {
+    quoteId: "q3",
+    providerName: "Premium Shield",
+    coverageDetails: {
+      homeDeductible: 500,
+      autoDeductible: 250,
+      liability: "500/250/100",
+      comprehensive: true,
+      collision: true,
+    },
+    premium: {
+      monthly: 225,
+      annual: 2700,
+    },
+    policyLink: "#",
+    rating: 5,
+  },
+];
 
 type AppState = "welcome" | "form" | "results" | "profile";
 
@@ -34,6 +90,7 @@ export default function App() {
   const { setFrameReady, isFrameReady, context } = useMiniKit();
   const [frameAdded, setFrameAdded] = useState(false);
   const [appState, setAppState] = useState<AppState>("welcome");
+  const [error, setError] = useState<string | null>(null);
   
   const addFrame = useAddFrame();
   const openUrl = useOpenUrl();
@@ -71,8 +128,18 @@ export default function App() {
   }, [addFrame]);
 
   const handleFormSubmit = async (profileData: Partial<InsuranceProfile>) => {
-    await fetchQuotes(profileData);
-    setAppState("results");
+    try {
+      setError(null);
+      await fetchQuotes(profileData);
+      setAppState("results");
+    } catch (err) {
+      console.error("Error fetching quotes:", err);
+      // Show error message but continue with mock data
+      setError("We encountered an authentication issue, but we're showing you sample quotes instead.");
+      // Use mock data if API call fails
+      setQuotes(mockQuotes);
+      setAppState("results");
+    }
   };
 
   const handleSelectQuote = (quote: Quote) => {
@@ -241,6 +308,14 @@ export default function App() {
             else if (appState === "results") setAppState("form");
           }}
         >
+          {error && (
+            <ErrorMessage 
+              message={error} 
+              type="warning" 
+              onDismiss={() => setError(null)}
+              autoDismiss={true}
+            />
+          )}
           {renderContent()}
         </AppShell>
 

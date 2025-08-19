@@ -75,15 +75,19 @@ export function Providers(props: { children: ReactNode }) {
   return (
     <ThemeContext.Provider value={{ theme, setTheme, isDarkMode }}>
       <MiniKitProvider
-        apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY}
+        apiKey={process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY || 'demo_key'}
         chain={base}
         config={{
           appearance: {
             mode: theme === 'system' ? 'auto' : theme,
             theme: "quoteflow-theme",
             name: "QuoteFlow",
-            logo: process.env.NEXT_PUBLIC_ICON_URL,
+            logo: process.env.NEXT_PUBLIC_ICON_URL || 'https://raw.githubusercontent.com/vistara-apps/quoteflow-a08d-17556242/main/public/logo.png',
           },
+          onError: (error) => {
+            console.warn('MiniKit error:', error);
+            // Continue with app functionality using mock data
+          }
         }}
       >
         {props.children}

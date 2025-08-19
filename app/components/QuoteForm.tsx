@@ -172,7 +172,23 @@ export function QuoteForm({ onSubmit, loading }: QuoteFormProps) {
           drivingRecord: formData.drivingRecord as 'clean' | 'minor' | 'major',
         },
       };
-      onSubmit(profileData);
+      
+      try {
+        // For demo purposes, we'll use mock data even if API key is missing
+        if (!process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY || 
+            process.env.NEXT_PUBLIC_ONCHAINKIT_API_KEY === 'demo_key') {
+          console.warn('Using mock data due to missing or demo API key');
+        }
+        
+        onSubmit(profileData);
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        setErrors({
+          ...errors,
+          liabilityPreference: 'There was an error processing your request. Please try again.'
+        });
+        setIsSubmitting(false);
+      }
     } else {
       // If any step is invalid, set all steps as touched to show errors
       setFormTouched({
